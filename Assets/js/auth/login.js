@@ -76,9 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             
-
-
-
             localStorage.setItem('currentUser', JSON.stringify(user));
             showAlert('Login successful! Redirecting...', 'success');
 
