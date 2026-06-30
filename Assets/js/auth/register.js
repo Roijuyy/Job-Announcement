@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const termsCheckbox = document.getElementById('terms');
 
     if (registerForm) {
-        registerForm.addEventListener('submit', (e) => {
+        registerForm.addEventListener('submit', async(e) => {
             e.preventDefault();
 
             const fullname = fullnameInput.value.trim();
@@ -52,9 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const users = JSON.parse(localStorage.getItem('users')) || [];
+            // Load and check JSON database
+            let all_users = [];
 
-            const userExists = users.some(user => user.email.toLowerCase() === email);
+            const user_res = await fetch("../../../Database/users.json");
+            all_users = await user_res.json();
+
+            const userExists = all_users.find(u => u.email === email.toLowerCase());
+
             if (userExists) {
                 showAlert('An account with this email already exists.', 'error');
                 return;
@@ -67,8 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 password
             };
 
-            users.push(newUser);
-            localStorage.setItem('users', JSON.stringify(users));
+            // Add user to JSON database and save localstorage
+            all_users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(all_users));
 
             showAlert('Account created successfully! Redirecting to login...', 'success');
 

@@ -84,7 +84,7 @@
 .hero-img-1, 
 .hero-img-2, 
 .hero-img-3 {
-  background-image: url("../../images/photo_5_2026-05-28_02-27-14.jpg");
+  background-image: url("../../images/hero-1.jpg");
   background-size: 300% auto; /* Forces the image to stretch across all 3 column spaces */
   background-repeat: no-repeat;
 }
@@ -120,6 +120,77 @@
     box-shadow: var(--shadow-md);
     border-radius: 16px;
 }
+
+.card_header {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+
+    padding: 6px 12px;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.badge--fulltime {
+    background: #2563eb; /* Blue */
+}
+
+.badge--parttime {
+    background: #16a34a; /* Green */
+}
+
+.badge--remote {
+    background: #7c3aed; /* Purple */
+}
+
+.badge--contract {
+    background: #ea580c; /* Orange */
+}
+
+.badge--freelance {
+    background: #dc2626; /* Red */
+}
+
+.category {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+.company{
+    color:#2563eb;
+    font-weight:600;
+    margin:10px 0;
+}
+
 
 /* ==========================================================================
    Responsive Adaptations

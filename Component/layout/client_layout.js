@@ -1,6 +1,8 @@
 const header = document.querySelector('.header');
 const footer = document.querySelector('.footer-content');
 
+// Check authentiction
+const current_user = JSON.parse(localStorage.getItem('currentUser'));
 
 // ==========================
 //      Header Content
@@ -47,7 +49,7 @@ header.innerHTML = (
                     <div class="dropdown-content">
                         <a href="./profile.html">Profile</a>
                         <a onclick="toggleTheme()">Mode 🌓</a>
-                        <a href="../auth/login.html" id="logoutLink">Logout</a>
+                        ${current_user ? `<a href="../auth/login.html" id="logoutLink">Logout</a>` : `<a href="../auth/login.html">Login</a>`}
                     </div>
                 </li>
             </ul>

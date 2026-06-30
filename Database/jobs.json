@@ -12,7 +12,8 @@
       "requirement": "5+ years experience with C#, .NET, React, REST APIs, and SQL Server.",
       "salary": "$140k - $165k",
       "company_id": 1,
-      "createdAt": "2026-05-01"
+      "createdAt": "2026-05-01",
+      "imageURI": "/Assets/images/fullstack.jpg"
     },
     {
       "id": 2,
@@ -26,7 +27,8 @@
       "requirement": "Strong Figma skills, 3+ years experience in UI/UX design.",
       "salary": "$85k - $110k",
       "company_id": 2,
-      "createdAt": "2026-05-03"
+      "createdAt": "2026-05-03",
+      "imageURI": "/Assets/images/ux-ui.jpg"
     },
     {
       "id": 3,
@@ -40,7 +42,8 @@
       "requirement": "Experience with SEO, Meta Ads, Google Ads, and analytics tools.",
       "salary": "$70k - $90k",
       "company_id": 3,
-      "createdAt": "2026-05-05"
+      "createdAt": "2026-05-05",
+      "imageURI": "/Assets/images/marketing.jpg"
     },
     {
       "id": 4,
@@ -53,8 +56,9 @@
       "desc": "Develop scalable microservices and cloud-native backend services.",
       "requirement": "Node.js, Express, MongoDB, AWS experience required.",
       "salary": "$60/hr - $80/hr",
-      "company_id": 4,
-      "createdAt": "2026-05-07"
+      "company_id": 1,
+      "createdAt": "2026-05-07",
+      "imageURI": "/Assets/images/backend.jpg"
     },
     {
       "id": 5,
@@ -67,8 +71,9 @@
       "desc": "Support recruitment, onboarding, and employee engagement initiatives.",
       "requirement": "2+ years HR experience, strong communication skills.",
       "salary": "$45k - $55k",
-      "company_id": 5,
-      "createdAt": "2026-05-09"
+      "company_id": 2,
+      "createdAt": "2026-05-09",
+      "imageURI": "/Assets/images/software.jpg"
     },
     {
       "id": 6,
@@ -81,8 +86,9 @@
       "desc": "Build and maintain high-performance mobile applications.",
       "requirement": "Flutter, Dart, Firebase, REST API integration experience.",
       "salary": "$95k - $120k",
-      "company_id": 6,
-      "createdAt": "2026-05-10"
+      "company_id": 3,
+      "createdAt": "2026-05-10",
+      "imageURI": "/Assets/images/mobile.jpg"
     },
     {
       "id": 7,
@@ -95,8 +101,9 @@
       "desc": "Analyze business data and generate actionable insights.",
       "requirement": "SQL, Excel, Power BI, dashboarding experience.",
       "salary": "$75k - $98k",
-      "company_id": 7,
-      "createdAt": "2026-05-12"
+      "company_id": 2,
+      "createdAt": "2026-05-12",
+      "imageURI": "/Assets/images/data-analysis.jpg"
     },
     {
       "id": 8,
@@ -109,8 +116,9 @@
       "desc": "Manage customer relationships and improve retention rates.",
       "requirement": "Strong communication, SaaS industry experience.",
       "salary": "$65k - $85k",
-      "company_id": 8,
-      "createdAt": "2026-05-14"
+      "company_id": 3,
+      "createdAt": "2026-05-14",
+      "imageURI": "/Assets/images/it-management.jpg"
     },
     {
       "id": 9,
@@ -123,8 +131,9 @@
       "desc": "Automate deployment pipelines and maintain cloud infrastructure.",
       "requirement": "Docker, Kubernetes, Linux, CI/CD pipeline experience.",
       "salary": "$125k - $150k",
-      "company_id": 9,
-      "createdAt": "2026-05-16"
+      "company_id": 1,
+      "createdAt": "2026-05-16",
+      "imageURI": "/Assets/images/dev-op.jpg"
     },
     {
       "id": 10,
@@ -137,8 +146,9 @@
       "desc": "Write SEO-friendly articles, blogs, and marketing content.",
       "requirement": "Strong writing portfolio and SEO knowledge.",
       "salary": "$30/hr - $45/hr",
-      "company_id": 10,
-      "createdAt": "2026-05-18"
+      "company_id": 1,
+      "createdAt": "2026-05-18",
+      "imageURI": "/Assets/images/content.jpg"
     }
   ]
 }

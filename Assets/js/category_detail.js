@@ -88,13 +88,15 @@ function renderCategory(jobJson) {
             <article class="card" onclick="location.href='job_detail.html?id=${j.id}'" style="cursor: pointer;">
                 <div class="card_body">
 
-                    <div class="card_header flex-between">
+                    <div class="card_header">
+                        <img src="${j.imageURI}" alt="${j.title}" class="card-image">
+
                         <span class="badge badge--${j.type}">
                             ${j.badgeText}
                         </span>
 
-                        <span class="text-muted" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            ${category.name || "Unknown Category"}
+                        <span class="category">
+                            ${category ? category.name : "Unknown Category"}
                         </span>
                     </div>
 

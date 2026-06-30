@@ -1,14 +1,14 @@
 [
     {
-        "email": "admin@example.com",
-        "password": "12345678",
+        "email": "admin@gmail.com",
+        "password": "Admin123",
         "fullname": "Admin User",
         "phone": "+855 12345678"
     },
     {
-        "email": "user@example.com",
-        "password": "12345678",
-        "fullname": "Regular User",
+        "email": "finn123@gmail.com",
+        "password": "Finn123",
+        "fullname": "Finn Jake",
         "phone": "+855 87654321"
     }
 ]

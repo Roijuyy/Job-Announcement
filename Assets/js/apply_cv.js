@@ -18,6 +18,13 @@ let all_company = [];
 // ==========================================
 const Get_Apply_Detail = async() => {
     try {
+        // Check authentiction
+        const current_user = JSON.parse(localStorage.getItem('currentUser'));
+        if (!current_user) {
+            window.location.href = "/Component/page/auth/login.html";
+            return;
+        }
+
         const [jobRes, categoryRes, companyRes] = await Promise.all([
             fetch('../../../Database/jobs.json'),
             fetch('../../../Database/categories.json'),
