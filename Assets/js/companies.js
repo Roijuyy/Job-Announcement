@@ -10,9 +10,9 @@ const Get_Companies = async() => {
     try {
         const response = await fetch('../../../Database/companies.json');
         const data = await response.json();
-        if (!data.companies) return;
-
-        all_companies = data.companies;
+        const baseCompanies = data.companies || [];
+        const customCompanies = JSON.parse(localStorage.getItem('companies')) || [];
+        all_companies = [...customCompanies, ...baseCompanies];
         renderCompanies(all_companies);
     } catch (error) {
         console.error("Failed to fetch companies:", error);

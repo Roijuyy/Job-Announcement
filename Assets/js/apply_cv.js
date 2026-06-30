@@ -11,6 +11,8 @@ const btnCancel = document.getElementById('btn_cancel');
 // Store data locally
 let all_category = [];
 let all_company = [];
+let currentJob = null;
+let currentCompany = null;
 
 
 // ==========================================
@@ -30,8 +32,12 @@ const Get_Apply_Detail = async() => {
 
         if (!jobData.jobs || !categoryData.categories || !companyData.companies) return;
 
+        const baseJobs = jobData.jobs || [];
+        const customJobs = JSON.parse(localStorage.getItem('jobs')) || [];
+        const deletedIds = JSON.parse(localStorage.getItem('deleted_job_ids')) || [];
+
         // Stored to local data
-        const all_job = jobData.jobs;
+        const all_job = [...customJobs, ...baseJobs].filter(job => !deletedIds.includes(Number(job.id)) && !deletedIds.includes(String(job.id)));
         all_category = categoryData.categories;
         all_company = companyData.companies;
 
@@ -64,6 +70,9 @@ async function RenderApplyDetail(job) {
     // Relationship
     const category_detail = await all_category.find(c => c.id === job.category_id) || {};
     const company_detail = await all_company.find(c => c.id === job.company_id) || {};
+    
+    currentJob = job;
+    currentCompany = company_detail;
     
     applyDetail.innerHTML += `
         <div class="card_header">
@@ -126,6 +135,58 @@ btnCancel.addEventListener('click', () => {
     resetUploadFields();
     if (txtCoverLetter) txtCoverLetter.value = '';
 });
+
+// ==========================================
+//          CV SUBMISSION PERSISTENCE
+// ==========================================
+const applyForm = document.querySelector('form');
+if (applyForm) {
+    applyForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select and upload your CV/Resume file.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const coverLetter = txtCoverLetter ? txtCoverLetter.value.trim() : '';
+
+        // Retrieve current logged in user details if available
+        const currentUserStr = localStorage.getItem('currentUser');
+        let candidateName = "Anonymous Candidate";
+        let candidateEmail = "anonymous@example.com";
+        let candidatePhone = "+855 00 000 000";
+
+        if (currentUserStr) {
+            const currentUser = JSON.parse(currentUserStr);
+            candidateName = currentUser.fullname || candidateName;
+            candidateEmail = currentUser.email || candidateEmail;
+            candidatePhone = currentUser.phone || candidatePhone;
+        }
+
+        const newApp = {
+            id: 'app_' + Date.now(),
+            fullname: candidateName,
+            email: candidateEmail,
+            phone: candidatePhone,
+            jobTitle: currentJob ? currentJob.title : "Senior Full-Stack Engineer (C# / React)",
+            companyName: currentCompany ? currentCompany.name : "Nexus Financial Fintech",
+            coverLetter: coverLetter || "Please see my attached CV file.",
+            fileName: file.name,
+            status: "Pending",
+            appliedDate: new Date().toISOString().split('T')[0]
+        };
+
+        // Append to CV applications register in LocalStorage
+        const cvApps = JSON.parse(localStorage.getItem('cv_applications')) || [];
+        cvApps.unshift(newApp);
+        localStorage.setItem('cv_applications', JSON.stringify(cvApps));
+
+        alert('Congratulations! Your CV application was successfully submitted.');
+        window.location.href = '../client/home.html';
+    });
+}
 
 // ==========================================
 //          INITIALIZE 

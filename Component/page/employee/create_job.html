@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" theme-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Job Posting | JobPortal Admin</title>
+  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  
+  <link rel="stylesheet" href="../../../Assets/css/style.css">
+  <link rel="stylesheet" href="../../../Assets/css/employee/layout.css">
+</head>
+<body>
+
+    <header class="emp-header" role="banner">
+        <nav class="top-nav" aria-label="Global Administration Navigation">
+            <div class="nav-brand">
+                <i class="bi bi-briefcase-fill px-2" style="color: var(--brand-primary);" aria-hidden="true"></i>
+                <span>JobPortal Admin</span>
+            </div>
+            <ul class="d-flex gap-2 list-unstyled" style="margin: 0; align-items: center;">
+                <li>
+                    <a href="../client/profile.html" aria-label="View user profile documentation">
+                        <i class="bi bi-person-circle px-1" aria-hidden="true"></i> Profile
+                    </a>
+                </li>
+                <li>
+                    <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme mode" style="background: transparent; border: none; color: inherit; cursor: pointer; display: flex; align-items: center; font-size: inherit;">
+                        <i class="bi bi-moon-stars px-1" aria-hidden="true"></i> Mode
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside class="emp-aside-nav" role="complementary" aria-label="Console Subnavigation Matrix">
+        <nav class="side-nav">
+            <div class="sidebar-header" id="nav-header-mgmt">Management Console</div>
+            <ul aria-labelledby="nav-header-mgmt">
+                <li>
+                    <a href="./dashboard.html">
+                        <i class="bi bi-speedometer2 px-2" aria-hidden="true"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="./employee.html">
+                        <i class="bi bi-people px-2" aria-hidden="true"></i> Employees
+                    </a>
+                </li>
+                <li>
+                    <a href="./customer.html">
+                        <i class="bi bi-building px-2" aria-hidden="true"></i> Customers
+                    </a>
+                </li>
+                <li>
+                    <a href="./cv.html">
+                        <i class="bi bi-file-earmark-text px-2" aria-hidden="true"></i> CVs
+                    </a>
+                </li>
+                <li>
+                    <a href="./jobs.html" class="active">
+                        <i class="bi bi-list-task px-2" aria-hidden="true"></i> View Listings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="emp-main-content" role="main" id="main-content-focus">
+        <div class="container" style="max-width: 800px;">
+            
+            <section class="row mb-4" aria-label="Header overview banner">
+                <div class="col-12">
+                    <div style="background: linear-gradient(135deg, var(--bg-card), var(--border-color)); padding: 25px 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 1rem;">
+                        <a href="javascript:history.back()" class="btn-action-view" style="padding: 8px 12px; border-radius: 8px;"><i class="bi bi-arrow-left"></i> Back</a>
+                        <div>
+                            <h1 class="text-heading" style="font-size: 1.75rem; margin: 0;">Create New Job Announcement</h1>
+                            <p class="text-muted" style="margin: 0; font-size: 0.9rem;">Fill out the details below to deploy a verified active listing on the platform.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Job Creator Form Card -->
+            <section class="card" style="padding: 2rem;" aria-label="Job post creator form">
+                <form id="jobCreatorForm">
+                    <div class="row">
+                        <!-- Title -->
+                        <div class="col-12" style="padding: 8px 15px;">
+                            <label class="form-label" for="jobTitleInput">Job Title *</label>
+                            <input type="text" id="jobTitleInput" class="form-control" placeholder="e.g. Senior Full-Stack Engineer (C# / React)" required>
+                        </div>
+
+                        <!-- Company / Customer Select -->
+                        <div class="col-6" style="padding: 8px 15px;">
+                            <label class="form-label" for="jobCompanySelect">Posting Company / Customer *</label>
+                            <select id="jobCompanySelect" class="form-select" required>
+                                <option value="" disabled selected>Select partner company...</option>
+                            </select>
+                        </div>
+
+                        <!-- Job Category Select -->
+                        <div class="col-6" style="padding: 8px 15px;">
+                            <label class="form-label" for="jobCategorySelect">Job Category *</label>
+                            <select id="jobCategorySelect" class="form-select" required>
+                                <option value="" disabled selected>Select categories classification...</option>
+                            </select>
+                        </div>
+
+                        <!-- Job Type Select -->
+                        <div class="col-6" style="padding: 8px 15px;">
+                            <label class="form-label" for="jobTypeSelect">Job Schedule Type *</label>
+                            <select id="jobTypeSelect" class="form-select" required>
+                                <option value="fulltime">Full-Time</option>
+                                <option value="parttime">Part-Time</option>
+                                <option value="remote">Remote</option>
+                                <option value="freelance">Freelance</option>
+                                <option value="contract">Contract</option>
+                            </select>
+                        </div>
+
+                        <!-- Salary Bracket -->
+                        <div class="col-6" style="padding: 8px 15px;">
+                            <label class="form-label" for="jobSalaryInput">Salary Range *</label>
+                            <input type="text" id="jobSalaryInput" class="form-control" placeholder="e.g. $140k - $165k" required>
+                        </div>
+
+                        <!-- Work hours/dates -->
+                        <div class="col-12" style="padding: 8px 15px;">
+                            <label class="form-label" for="jobWorkHoursInput">Work Schedule / Shift *</label>
+                            <input type="text" id="jobWorkHoursInput" class="form-control" placeholder="e.g. Monday - Friday, 9:00 AM - 6:00 PM" required>
+                        </div>
+
+                        <!-- Benefits -->
+                        <div class="col-12" style="padding: 8px 15px;">
+                            <label class="form-label" for="jobBenefitsInput">Benefits & Incentives (Comma separated)</label>
+                            <input type="text" id="jobBenefitsInput" class="form-control" placeholder="e.g. Health Insurance, Performance Bonus, Flexible Schedule">
+                        </div>
+
+                        <!-- Requirements -->
+                        <div class="col-12" style="padding: 8px 15px;">
+                            <label class="form-label" for="jobRequirementsInput">Requirements / Experience (Comma separated) *</label>
+                            <textarea id="jobRequirementsInput" class="form-control" rows="3" placeholder="e.g. 5+ years with C#, React, REST APIs, SQL Server" required></textarea>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="col-12" style="padding: 8px 15px;">
+                            <label class="form-label" for="jobDescriptionInput">Job Summary / Description *</label>
+                            <textarea id="jobDescriptionInput" class="form-control" rows="5" placeholder="e.g. Design scalable client distribution modules and manage backend integrations..." required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submission Action -->
+                    <div style="display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; margin-top: 1.5rem;">
+                        <button type="button" class="btn-action-view" style="padding: 10px 20px;" onclick="history.back()">Cancel</button>
+                        <button type="submit" class="btn-primary" style="padding: 10px 25px;">Deploy Listing</button>
+                    </div>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="emp-footer-content" role="contentinfo">
+        <p style="margin: 0;">&copy; 2026 Employer Management Portal. All application structures validated securely.</p>
+    </footer>
+
+    <script src="../../../Assets/js/mode.js"></script>
+    <script src="../../../Assets/js/employee/create_job.js"></script>
+</body>
+</html>

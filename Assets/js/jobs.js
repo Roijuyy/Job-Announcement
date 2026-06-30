@@ -24,8 +24,12 @@ const Get_All_Jobs = async () => {
 
         if (!jobData.jobs || !companyData.companies) return;
         
-        // Add Data
-        all_jobs = jobData.jobs;
+        const baseJobs = jobData.jobs || [];
+        const customJobs = JSON.parse(localStorage.getItem('jobs')) || [];
+        const deletedIds = JSON.parse(localStorage.getItem('deleted_job_ids')) || [];
+
+        // Combine and filter
+        all_jobs = [...customJobs, ...baseJobs].filter(job => !deletedIds.includes(Number(job.id)) && !deletedIds.includes(String(job.id)));
         all_categories = categoryData.categories;
         all_companies = companyData.companies;
 

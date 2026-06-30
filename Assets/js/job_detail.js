@@ -23,8 +23,12 @@ const Get_Job_Detail = async() => {
 
         if (!jobData.jobs || !categoryData.categories || !companyData.companies) return;
 
+        const baseJobs = jobData.jobs || [];
+        const customJobs = JSON.parse(localStorage.getItem('jobs')) || [];
+        const deletedIds = JSON.parse(localStorage.getItem('deleted_job_ids')) || [];
+
         // Stored to local data
-        const all_job = jobData.jobs;
+        const all_job = [...customJobs, ...baseJobs].filter(job => !deletedIds.includes(Number(job.id)) && !deletedIds.includes(String(job.id)));
         all_category = categoryData.categories;
         all_company = companyData.companies;
 

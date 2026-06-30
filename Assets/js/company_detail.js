@@ -10,16 +10,16 @@ const Get_Company_Detail = async() => {
     try {
         const response = await fetch('../../../Database/companies.json');
         const data = await response.json();
-        if (!data.companies) return;
-
-        all_companies = data.companies;
+        const baseCompanies = data.companies || [];
+        const customCompanies = JSON.parse(localStorage.getItem('companies')) || [];
+        all_companies = [...customCompanies, ...baseCompanies];
 
         // FInd company with ID
         const company_param = new URLSearchParams(window.location.search);
         const company_id = company_param.get("company_id");
 
         if (!company_id) return;
-        const find_company = await all_companies.find(c => c.id === Number(company_id));
+        const find_company = await all_companies.find(c => String(c.id) === String(company_id));
         renderCompany(find_company);
     } catch (error) {
         console.error("Failed to fetch company:", error);

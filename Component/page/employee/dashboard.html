@@ -3,49 +3,249 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Employer Console Dashboard | JobPortal Admin</title>
+  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  
   <link rel="stylesheet" href="../../../Assets/css/style.css">
   <link rel="stylesheet" href="../../../Assets/css/employee/layout.css">
 </head>
 <body>
 
-    <header class="emp-header">
-        <nav class="top-nav">
-            <div class="nav-brand">JobApplication</div>
-            <ul>
-                <li><a href="./home.html">Profile</a></li>
-                <li><a href="./jobs.html">Setting</a></li>
+    <header class="emp-header" role="banner">
+        <nav class="top-nav" aria-label="Global Administration Navigation">
+            <div class="nav-brand">
+                <i class="bi bi-briefcase-fill px-2" style="color: var(--brand-primary);" aria-hidden="true"></i>
+                <span>JobPortal Admin</span>
+            </div>
+            <ul class="d-flex gap-2 list-unstyled" style="margin: 0; align-items: center;">
+                <li>
+                    <a href="../client/profile.html" aria-label="View user profile documentation">
+                        <i class="bi bi-person-circle px-1" aria-hidden="true"></i> Profile
+                    </a>
+                </li>
+                <li>
+                    <button class="btn-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme mode" style="background: transparent; border: none; color: inherit; cursor: pointer; display: flex; align-items: center; font-size: inherit;">
+                        <i class="bi bi-moon-stars px-1" aria-hidden="true"></i> Mode
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <aside class="emp-aside-nav">
+    <aside class="emp-aside-nav" role="complementary" aria-label="Console Subnavigation Matrix">
         <nav class="side-nav">
-            <div class="sidebar-header">Navigation</div>
-            <ul>
-                <li><a href="./home.html" class="active">Dashboard</a></li>
-                <li><a href="./application.html">Applications</a></li>
-                <li><a href="./jobs.html">Jobs</a></li>
+            <div class="sidebar-header" id="nav-header-mgmt">Management Console</div>
+            <ul aria-labelledby="nav-header-mgmt">
+                <li>
+                    <a href="./dashboard.html" class="active" aria-current="page">
+                        <i class="bi bi-speedometer2 px-2" aria-hidden="true"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="./employee.html">
+                        <i class="bi bi-people px-2" aria-hidden="true"></i> Employees
+                    </a>
+                </li>
+                <li>
+                    <a href="./customer.html">
+                        <i class="bi bi-building px-2" aria-hidden="true"></i> Customers
+                    </a>
+                </li>
+                <li>
+                    <a href="./cv.html">
+                        <i class="bi bi-file-earmark-text px-2" aria-hidden="true"></i> CVs
+                    </a>
+                </li>
+                <li>
+                    <a href="./jobs.html">
+                        <i class="bi bi-list-task px-2" aria-hidden="true"></i> View Listings
+                    </a>
+                </li>
             </ul>
         </nav>
     </aside>
 
-    <main class="emp-main-content">
+    <main class="emp-main-content" role="main" id="main-content-focus">
         <div class="container">
-            <h1>Welcome Back</h1>
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa assumenda quas quidem tempore quisquam consequatur facilis incidunt commodi, illo similique porro repudiandae deleniti nobis vero nesciunt magni asperiores! Laborum, sunt!
-            </p>
+            
+            <section class="row mb-4" aria-label="Header overview banner">
+                <div class="col-12">
+                    <div style="background: linear-gradient(135deg, var(--bg-card), var(--border-color)); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+                        <h1 class="text-heading" style="font-size: 2.25rem; margin-bottom: 4px;">Recruiter Console</h1>
+                        <p class="text-muted">Analyze application statistics, schedule client interview pipelines, and update active job posting credits.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Metrics KPIs -->
+            <section class="mb-4" aria-label="Metric statistics dashboard row">
+                <div class="row" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                    
+                    <article class="card">
+                        <div class="card_body">
+                            <h2 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin: 0;">Active Postings</h2>
+                            <p class="text-heading" style="font-size: 2.25rem; font-weight: 800; margin: 10px 0 4px 0;" id="metric-active-posts">0</p>
+                            <span class="badge badge--fulltime" style="font-size: 0.7rem;">Live Directory</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card_body">
+                            <h2 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin: 0;">Total Applications</h2>
+                            <p class="text-heading" style="font-size: 2.25rem; font-weight: 800; margin: 10px 0 4px 0;" id="metric-total-applies">0</p>
+                            <span class="badge badge--parttime" style="font-size: 0.7rem;">Candidates Resumes</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card_body">
+                            <h2 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin: 0;">Interviews Scheduled</h2>
+                            <p class="text-heading" style="font-size: 2.25rem; font-weight: 800; margin: 10px 0 4px 0;" id="metric-interviews">0</p>
+                            <span class="badge badge--remote" style="font-size: 0.7rem;">Next 7 Days</span>
+                        </div>
+                    </article>
+                    
+                </div>
+            </section>
+
+            <section class="row" aria-label="Active corporate operational listings table tracking context">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card_body">
+                            <div class="flex-between mb-3" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; gap: 1rem;">
+                                <h2 class="text-heading" style="font-size: 1.25rem; margin: 0;">Recent Managed Roles</h2>
+                                <a href="./create_job.html" class="btn-primary" style="margin: 0; font-size: 0.85rem; padding: 8px 16px; text-decoration: none; text-align: center; border-radius: 8px;">
+                                    Create Post <span aria-hidden="true">+</span>
+                                </a>
+                            </div>
+
+                            <div class="job-grid" id="dashboard-jobs-target">
+                                <!-- Dynamic jobs rendered here -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
 
-    <footer class="emp-footer-content">
-        <p>&copy; 2026 Employer Portal. All rights reserved.</p>
+    <footer class="emp-footer-content" role="contentinfo">
+        <p style="margin: 0;">&copy; 2026 Employer Management Portal. All application structures validated securely.</p>
     </footer>
 
-    <!-- Script to Load Header/Footer -->
-    <!-- <script src="../../Assets/js/employee_layout.js"></script> -->
     <script src="../../../Assets/js/mode.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 1. Initialize Default CV Applications in LocalStorage if not present
+            const defaultApps = [
+                {
+                    "id": "app_1",
+                    "fullname": "John Doe",
+                    "email": "johndoe@example.com",
+                    "phone": "+855 77 666 555",
+                    "jobTitle": "Senior Full-Stack Engineer (C# / React)",
+                    "companyName": "Nexus Financial Fintech",
+                    "coverLetter": "I have 6 years of experience building enterprise systems in .NET and React. I am excited to join Nexus Financial.",
+                    "fileName": "John_Doe_CV.pdf",
+                    "status": "Interviewing",
+                    "appliedDate": "2026-06-25"
+                },
+                {
+                    "id": "app_2",
+                    "fullname": "Jane Smith",
+                    "email": "janesmith@example.com",
+                    "phone": "+855 99 888 777",
+                    "jobTitle": "UI/UX Product Designer",
+                    "companyName": "PixelCraft Studio",
+                    "coverLetter": "I am passionate about creating clean, minimalistic, and highly intuitive interfaces. Please find my Figma portfolio attached.",
+                    "fileName": "Jane_Smith_Portfolio.pdf",
+                    "status": "Pending",
+                    "appliedDate": "2026-06-27"
+                },
+                {
+                    "id": "app_3",
+                    "fullname": "Alice Johnson",
+                    "email": "alicej@example.com",
+                    "phone": "+855 12 345 678",
+                    "jobTitle": "Digital Marketing Specialist",
+                    "companyName": "GrowthSpark Media",
+                    "coverLetter": "I specialize in scaling startup traffic using organic SEO and highly target ad campaigns. I managed $50k monthly ad spend.",
+                    "fileName": "Alice_Johnson_Resume.docx",
+                    "status": "Hired",
+                    "appliedDate": "2026-06-20"
+                }
+            ];
 
+            if (!localStorage.getItem('cv_applications')) {
+                localStorage.setItem('cv_applications', JSON.stringify(defaultApps));
+            }
+
+            const cvApps = JSON.parse(localStorage.getItem('cv_applications')) || [];
+
+            // 2. Fetch Data from Database APIs
+            try {
+                const [jobsRes, companiesRes] = await Promise.all([
+                    fetch('../../../Database/jobs.json'),
+                    fetch('../../../Database/companies.json')
+                ]);
+
+                const jobsData = await jobsRes.json();
+                const companiesData = await companiesRes.json();
+
+                const baseJobs = jobsData.jobs || [];
+                const customJobs = JSON.parse(localStorage.getItem('jobs')) || [];
+                const deletedIds = JSON.parse(localStorage.getItem('deleted_job_ids')) || [];
+                const jobs = [...customJobs, ...baseJobs].filter(job => !deletedIds.includes(Number(job.id)) && !deletedIds.includes(String(job.id)));
+
+                // Merge static companies with localStorage companies (customers)
+                const baseCompanies = companiesData.companies || [];
+                const customCompanies = JSON.parse(localStorage.getItem('companies')) || [];
+                const companies = [...customCompanies, ...baseCompanies];
+
+                // Update Metrics Counters
+                document.getElementById('metric-active-posts').textContent = jobs.length;
+                document.getElementById('metric-total-applies').textContent = cvApps.length;
+                
+                const interviewCount = cvApps.filter(app => app.status === 'Interviewing').length;
+                document.getElementById('metric-interviews').textContent = interviewCount;
+
+                // Render dynamic recent jobs (up to 3 jobs)
+                const jobsTarget = document.getElementById('dashboard-jobs-target');
+                jobsTarget.innerHTML = '';
+
+                jobs.slice(0, 3).forEach((job, index) => {
+                    const comp = companies.find(c => c.id === job.company_id) || { name: 'Unknown Company' };
+                    // Calculate dynamic number of applications for this job title
+                    const jobAppCount = cvApps.filter(app => app.jobTitle === job.title).length;
+
+                    jobsTarget.innerHTML += `
+                        <article class="card shadow-sm" style="padding: 1.25rem; margin: 0; min-height: 200px;">
+                            <div class="card_body" style="margin-bottom: 1rem;">
+                                <div class="card_header flex-between">
+                                    <span class="badge badge--${job.type}">${job.badgeText}</span>
+                                    <span class="text-muted" style="font-size: 0.8rem; font-weight: 600;">REF: #00${job.id}</span>
+                                </div>
+                                <h3 class="text-heading" style="font-size: 1.15rem; margin-top: 6px;">${job.title}</h3>
+                                <p class="text-muted" style="font-size: 0.85rem; color: var(--brand-primary); font-weight: 600; margin-bottom: 0.5rem;">${comp.name}</p>
+                                <p class="text-muted text-clamp-1" style="font-size: 0.85rem;">${job.desc}</p>
+                            </div>
+                            <div class="card_footer" style="padding-top: 12px; margin-top: auto;">
+                                <span class="text-price" style="font-size: 1rem;">${job.salary}</span>
+                                <span class="text-muted" style="font-size: 0.8rem;">
+                                    <i class="bi bi-envelope-fill" aria-hidden="true"></i> ${jobAppCount} Applies
+                                </span>
+                            </div>
+                        </article>
+                    `;
+                });
+            } catch (err) {
+                console.error("Dashboard failed to fetch live database assets:", err);
+            }
+        });
+    </script>
 </body>
 </html>
