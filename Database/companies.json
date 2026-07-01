@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Nexus Financial Fintech",
-      "logo": "https://placehold.co/100x100/png?text=Logo",
+      "logo": "/Assets/images/logo1.jpg",
       "location": "New York, USA",
       "website": "https://nexusfinancial.com",
       "industry": "Fintech",
@@ -19,7 +19,7 @@
     {
       "id": 2,
       "name": "PixelCraft Studio",
-      "logo": "https://placehold.co/100x100/png?text=Company",
+      "logo": "/Assets/images/logo2.jpg",
       "location": "San Francisco, USA",
       "website": "https://pixelcraftstudio.com",
       "industry": "Design",
@@ -35,7 +35,7 @@
     {
       "id": 3,
       "name": "GrowthSpark Media",
-      "logo": "https://placehold.co/100x100/png?text=Company",
+      "logo": "/Assets/images/logo3.jpg",
       "location": "Los Angeles, USA",
       "website": "https://growthsparkmedia.com",
       "industry": "Marketing",
