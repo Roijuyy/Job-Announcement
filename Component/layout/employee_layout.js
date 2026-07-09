@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="nav-start flex-between w-full">
                     <div class="nav-brand">
                         <i class="bi bi-briefcase-fill px-2" style="color: var(--brand-primary);" aria-hidden="true"></i>
-                        <span>Tonle Job</span>
+                        <span>Job Palace</span>
                     </div>
                     <button class="burger-menu" id="burgerToggle" aria-expanded="false" aria-controls="navMenu emp-aside-nav" aria-label="Toggle navigation menu" 
                         style="background: transparent; border: none; color: inherit; font-size: 1.75rem; cursor: pointer;">☰</button>   
